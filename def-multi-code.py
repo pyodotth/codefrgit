@@ -1,7 +1,8 @@
 
-from collections import Counter
 import base64
-from collections import ChainMap, namedtuple, deque
+import string
+from collections import ChainMap, Counter, deque, namedtuple
+from string import ascii_letters, ascii_uppercase
 
 
 def yeildchar(s):
@@ -80,7 +81,17 @@ def countlst():
         c[ch] += 1
 
     print(c)
-    print(type(c))
+    print(c['AAA'])
 
 
-countlst()
+def makeatoz():
+    ch_a = [chr(c) for c in range(65, 91)]
+    ch_A = [chr(c) for c in range(97, 123)]
+    print(ch_a)
+    print(ch_A)
+    char_a = list(string.ascii_lowercase)
+    char_A = list(string.ascii_uppercase)
+    char_L = list(string.ascii_letters)
+    print(char_a)
+    print(char_A)
+    print(char_L)

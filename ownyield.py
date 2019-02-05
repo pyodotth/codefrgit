@@ -1,4 +1,8 @@
 
+import base64
+from collections import ChainMap
+
+
 def yeildchar(s):
     for ch in s:
         yield ch
@@ -27,4 +31,27 @@ def iterlst():
     print(next(x))
 
 
-iterlst()
+def deencode():
+    t = base64.b64encode('ฉันมีปากกา'.encode('utf-8'))
+    print(t)
+    th = base64.b64decode(t).decode('utf-8')
+    print(th)
+    t = base64.b16encode('ฉันมีปากกา'.encode('utf-8'))
+    print(t)
+    th = base64.b16decode(t).decode('utf-8')
+    print(th)
+    t = base64.b32encode('ฉันมีปากกา'.encode('utf-8'))
+    print(t)
+    th = base64.b32decode(t).decode('utf-8')
+    print(th)
+
+
+def uschainmap(keyinp):  # ผูก dict 2 ตัวเข้าด้วยกัน ถ้า key ซ้ำจะเรียกใช้ตัวแรกเป็นหลัก
+    dict1 = {'a': 1, 'b': 2, 'c': 3}
+    dict2 = {'c': 5, 'e': 6, 'g': 7}
+
+    chaindict = ChainMap(dict1, dict2)
+    print(chaindict[keyinp])
+
+
+uschainmap('c')

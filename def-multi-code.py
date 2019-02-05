@@ -1,6 +1,7 @@
 
+from collections import Counter
 import base64
-from collections import ChainMap
+from collections import ChainMap, namedtuple, deque
 
 
 def yeildchar(s):
@@ -46,7 +47,8 @@ def deencode():
     print(th)
 
 
-def uschainmap(keyinp):  # ผูก dict 2 ตัวเข้าด้วยกัน ถ้า key ซ้ำจะเรียกใช้ตัวแรกเป็นหลัก
+# ผูก dict 2 ตัวเข้าด้วยกัน ถ้า key ซ้ำจะเรียกใช้ตัวแรกเป็นหลัก
+def uschainmap(keyinp):
     dict1 = {'a': 1, 'b': 2, 'c': 3}
     dict2 = {'c': 5, 'e': 6, 'g': 7}
 
@@ -54,4 +56,31 @@ def uschainmap(keyinp):  # ผูก dict 2 ตัวเข้าด้วยก
     print(chaindict[keyinp])
 
 
-uschainmap('c')
+def usenametuple():
+    lst = ['x', 'y']
+    #point = namedtuple('Point', ['x', 'y'])
+    # use same
+    point = namedtuple('Point', lst)
+    p = point(1, 2)
+    p2 = point(3, 4)
+    print("Point : {}/{}".format(p.x, p.y))
+    print("Point : {}/{}".format(p2.x, p2.y))
+
+
+def appendleft():
+    q = deque(['a', 'b', 'c'])
+    q.append('x')
+    q.appendleft('y')
+    print(q)
+
+
+def countlst():
+    c = Counter()
+    for ch in ['AAA', 'ABC', 'AAA', 'BCB', 'AAA']:
+        c[ch] += 1
+
+    print(c)
+    print(type(c))
+
+
+countlst()

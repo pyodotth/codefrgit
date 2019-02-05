@@ -1,8 +1,12 @@
 
+
 import base64
+import hashlib
 import string
 from collections import ChainMap, Counter, deque, namedtuple
-from string import ascii_letters, ascii_uppercase
+from dataclasses import replace
+from datetime import *
+from string import hexdigits
 
 
 def yeildchar(s):
@@ -95,3 +99,24 @@ def makeatoz():
     print(char_a)
     print(char_A)
     print(char_L)
+
+
+def timedatezone():
+    dt = datetime(2015, 4, 19, 12, 20)
+    print(dt)
+    print(dt.timestamp())
+    print(datetime.fromtimestamp(dt.timestamp()))
+    print(datetime.utcfromtimestamp(dt.timestamp()))
+    utc_time = datetime.utcnow()
+    print(utc_time)
+
+
+def md5sha1():
+    md5 = hashlib.md5()
+    md5.update('How to use md5 in python hashlin?'.encode('utf-8'))
+    print(md5)  # print md5 hash object
+    print(md5.hexdigest())
+
+    sha = hashlib.sha1()
+    sha.update('How to use sha1 in python?'.encode('utf-8'))
+    print(sha.hexdigest())
